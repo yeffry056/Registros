@@ -1,0 +1,40 @@
+﻿<Window x:Class="Registros.UI.Registros.rRoles"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Registros.UI.Registros"
+        mc:Ignorable="d"
+        Title="Registro de Roles" Height="212" Width="315" Icon="/Resources/icono.icon.png" Background="#FF10C8DA">
+    <Grid>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="27,25,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextRolID" HorizontalAlignment="Left" Margin="104,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Text="{Binding RolID}"/>
+        <DatePicker x:Name="FechaCreacionDatePicker" HorizontalAlignment="Left" Margin="104,53,0,0" VerticalAlignment="Top" SelectedDate="{Binding FechaCreacion}" SelectedDateFormat="Short" Width="120"/>
+        <Button HorizontalAlignment="Left" Margin="192,28,0,0" VerticalAlignment="Top" Click="BtnBuscar" Width="25">
+            <Image Height="16" Width="22" Source="/Resources/buscar.png"/>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="47,137,0,0" VerticalAlignment="Top" Height="27" Width="68" Click="BtnNuevo">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Resources/nuevo.png" Width="18" />
+                <Label Content="Nuevo" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Margin="0,-2,0,0" />
+            </StackPanel>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="193,137,0,0" VerticalAlignment="Top" Height="27" Width="68" Click="BtnEliminar">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Resources/Eliminar.png" Stretch="Uniform" Width="18" />
+                <Label Content="Eliminar" Margin="-2,-2,0,0" />
+            </StackPanel>
+        </Button>
+        <Label Content="Fecha" HorizontalAlignment="Left" Margin="27,51,0,0" VerticalAlignment="Top"/>
+        <Label Content="Descripción" HorizontalAlignment="Left" Margin="27,77,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextDescripcion" HorizontalAlignment="Left" Margin="104,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Descripcion}" TextChanged="TextDescripc"/>
+        <Button  HorizontalAlignment="Left" Margin="120,137,0,0" VerticalAlignment="Top" Height="27" Width="68" Click="BtnGuardar">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Resources/Guardar.png" Width="18" />
+                <Label Content="Guardar" Margin="-2,-2,0,0" />
+            </StackPanel>
+        </Button>
+
+
+    </Grid>
+</Window>
