@@ -63,6 +63,8 @@
 
   <ItemGroup>
     <Folder Include="DATA\" />
+    <Folder Include="UI\Consultas\" />
+    <Folder Include="UI\Reportes\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -71,6 +73,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="UI\Registros\rUsuarios.xaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
   </ItemGroup>
 
 </Project>

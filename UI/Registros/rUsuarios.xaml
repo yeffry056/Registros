@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Registros.UI.Registros"
         mc:Ignorable="d"
-        Title="Registro de Usuarios" Height="293" Width="365"  Background="#FF01BBDF" Icon="/Resources/icono.icon.png">
+        Title="Registro de Usuarios" Height="293" Width="355"  Background="#FF01BBDF" Icon="/Resources/icono.icon.png">
     <Grid>
 
         <Label Content="ID" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextUsuarioId" HorizontalAlignment="Left" Margin="69,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Text="{Binding UsuarioId}"/>
-        <Label Content="Alias" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextAlias"  HorizontalAlignment="Left" Margin="69,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Text="{Binding Alias}"/>
-        <Label Content="Nombre" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top"/>
-        <Label Content="Clave " HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top"/>
-        <Label Content="RolID" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextNombre"  HorizontalAlignment="Left" Margin="69,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214"  Text="{Binding Nombre}"/>
+        <Label Content="Alias" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextAlias"  HorizontalAlignment="Left" Margin="69,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192" Text="{Binding Alias}"/>
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top"/>
+        <Label Content="Clave " HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top"/>
+        <Label Content="RolID" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextNombre"  HorizontalAlignment="Left" Margin="69,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192"  Text="{Binding Nombre}"/>
 
-        <Label Content="Email" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextRolId"  HorizontalAlignment="Left" Margin="69,172,0,0"  VerticalAlignment="Top" Width="152"  Text="{Binding RolId}"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextRolId"  HorizontalAlignment="Left" Margin="69,50,0,0"  VerticalAlignment="Top" Width="86"  Text="{Binding RolId}"/>
         <Button HorizontalAlignment="Left" Margin="162,26,0,0" VerticalAlignment="Top" Width="26" Click="BtnBuscar" >
             <Image Height="16" Width="21" Source="/Resources/buscar.png" />
 
@@ -44,11 +44,11 @@
                 <Label Content="Eliminar" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0,-7,0,0" />
             </StackPanel>
         </Button>
-        <PasswordBox x:Name="TextClave" HorizontalAlignment="Left" Margin="69,149,0,0" VerticalAlignment="Top" Width="152"/>
-        <DatePicker x:Name="FechaIngresoDatePicker" HorizontalAlignment="Left" Margin="69,51,0,0" VerticalAlignment="Top" SelectedDate="{Binding FechaIngreso}" Width="152"/>
-        <Label Content="Fecha" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextEmail"  HorizontalAlignment="Left" Margin="69,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214"  Text="{Binding Email}"/>
-        <CheckBox x:Name="CheckActivo" Content="Activo" HorizontalAlignment="Left" Margin="285,28,0,0" VerticalAlignment="Top" Click="Activo"/>
+        <PasswordBox x:Name="TextClave" HorizontalAlignment="Left" Margin="69,170,0,0" VerticalAlignment="Top" Width="192"/>
+        <DatePicker x:Name="FechaIngresoDatePicker" HorizontalAlignment="Left" Margin="69,72,0,0" VerticalAlignment="Top" SelectedDate="{Binding FechaIngreso}" Width="119"/>
+        <Label Content="Fecha" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextEmail"  HorizontalAlignment="Left" Margin="69,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192"  Text="{Binding Email}"/>
+        <CheckBox x:Name="CheckActivo" Content="Activo" HorizontalAlignment="Left" Margin="235,28,0,0" VerticalAlignment="Top" Click="Activo"/>
 
 
     </Grid>
