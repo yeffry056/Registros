@@ -27,37 +27,18 @@ namespace Registros.UI.Registros
             InitializeComponent();
             this.DataContext = roles;
         }
-        private void BtnBuscar(object sender, RoutedEventArgs e)
-        {
-            if (TextRolID.Text.Length == 0 || Convert.ToInt32(TextRolID.Text) == 0)
-            {
-               
-                MessageBox.Show("RolID vacio", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            var roles = RolesBLL.Buscar(Convert.ToInt32(TextRolID.Text));
-            if (roles != null)
-                this.roles = roles;
-            else
-            {
-                Limpiar();
-                MessageBox.Show("No existe el rol que intenta buscar", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-                
-
-            this.DataContext = this.roles;
-        }
         private void Limpiar()
         {
             this.roles = new Roles();
             this.DataContext = roles;
             FechaCreacionDatePicker.SelectedDate = DateTime.Now;
+            CheckBoxAsignado.IsChecked = false;
+
         }
         private bool Validar()
         {
             bool esValido = true;
-            if(TextRolID.Text.Length == 0)
+            if (TextRolID.Text.Length == 0)
             {
                 esValido = false;
                 MessageBox.Show("Transaccion Fallida", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -69,26 +50,63 @@ namespace Registros.UI.Registros
             }
             return esValido;
         }
+        private void Cargar()
+        {
+            this.DataContext = null;
+            CheckBoxAsignado.IsChecked = false;
+            this.DataContext = roles;
+        }
+        private bool ValidarBusqueda()
+        {
+            bool esValido = true;
+            if (TextRolID.Text.Length == 0 || Convert.ToInt32(TextRolID.Text) == 0)
+            {
+                esValido = false;
+                MessageBox.Show("RolID vacio", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                
+            }
+            return esValido;
+        }
+        private void BtnBuscar(object sender, RoutedEventArgs e)
+        {
+            if (!ValidarBusqueda())
+                return;
+
+            var roles = RolesBLL.Buscar(Convert.ToInt32(TextRolID.Text));
+            if (roles != null) { 
+                this.roles = roles;
+                Cargar();
+            }
+            else
+            {
+                Limpiar();
+                MessageBox.Show("No existe el rol que intenta buscar", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+                
+
+            //this.DataContext = this.roles;
+        }
         private void BtnNuevo(object sender, RoutedEventArgs e)
         {
             Limpiar();
         }
         private void BtnGuardar(object sender, RoutedEventArgs e)
         {
+            bool paso = false;
             if (!Validar())
                 return;
-
-            var paso = RolesBLL.Guardar(roles);
+    
+            paso = RolesBLL.Guardar(roles);
 
             if (paso)
             {
-                //MessageBox.Show(roles.Descripcion);
+                
                 Limpiar();
                 MessageBox.Show("Transaccion Exitosa", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
                 
             }
-           // else
-           //     MessageBox.Show("Transaccion Fallida", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+              MessageBox.Show("Transaccion Fallida", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
 
         }
         private void BtnEliminar(object sender, RoutedEventArgs e)
@@ -122,11 +140,37 @@ namespace Registros.UI.Registros
             else
                 MessageBox.Show("No fue posible eliminar el registro", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-
         private void TextDescripc(object sender, TextChangedEventArgs e)
         {
             TextDescripcion.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(TextDescripcion.Text);
             TextDescripcion.SelectionStart = TextDescripcion.Text.Length;
         }
+        private void BtnRemover(object sender, RoutedEventArgs e)
+        {
+            if(DataGridDetalle.Items.Count >= 1 && DataGridDetalle.SelectedIndex <= DataGridDetalle.Items.Count - 1)
+            {
+                roles.Detalle.RemoveAt(DataGridDetalle.SelectedIndex);
+                Cargar();
+            }
+        }
+        private void BtnAgregar(object sender, RoutedEventArgs e)
+        {
+            string asignar;
+            if (CheckBoxAsignado.IsChecked.Value)
+            {
+                 asignar = "Si";
+            } else
+                asignar = "No";
+
+            roles.Detalle.Add(new RolesDetalles(roles.RolId, Convert.ToInt32(TextPermidoId.Text), 
+               asignar, TextDescripcion.Text));
+            
+            Cargar();
+            
+            TextPermidoId.Focus();
+            TextPermidoId.Clear();
+            TextPermidoId.Focus();
+        }
+        
     }
 }

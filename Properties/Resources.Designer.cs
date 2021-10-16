@@ -63,6 +63,26 @@ namespace Registros.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] BtnAgregar {
+            get {
+                object obj = ResourceManager.GetObject("BtnAgregar", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BtnRemover {
+            get {
+                object obj = ResourceManager.GetObject("BtnRemover", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] buscar {
             get {
                 object obj = ResourceManager.GetObject("buscar", resourceCulture);

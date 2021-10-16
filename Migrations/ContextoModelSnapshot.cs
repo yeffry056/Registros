@@ -18,9 +18,12 @@ namespace Registros.Migrations
 
             modelBuilder.Entity("Registros.Entidades.Roles", b =>
                 {
-                    b.Property<int>("RolID")
+                    b.Property<int>("RolId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Activo")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
@@ -28,9 +31,34 @@ namespace Registros.Migrations
                     b.Property<DateTime>("FechaCreacion")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("RolID");
+                    b.HasKey("RolId");
 
                     b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("Registros.Entidades.RolesDetalles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EsAsignado")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PermisoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RolId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RolId");
+
+                    b.ToTable("RolesDetalles");
                 });
 
             modelBuilder.Entity("Registros.Entidades.Usuarios", b =>
@@ -63,6 +91,20 @@ namespace Registros.Migrations
                     b.HasKey("UsuarioId");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("Registros.Entidades.RolesDetalles", b =>
+                {
+                    b.HasOne("Registros.Entidades.Roles", null)
+                        .WithMany("Detalle")
+                        .HasForeignKey("RolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Registros.Entidades.Roles", b =>
+                {
+                    b.Navigation("Detalle");
                 });
 #pragma warning restore 612, 618
         }

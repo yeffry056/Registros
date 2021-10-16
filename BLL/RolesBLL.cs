@@ -15,12 +15,16 @@ namespace Registros.BLL
     {
         public static Roles Buscar(int id)
         {
+            Roles roles = new Roles();
             Contexto contexto = new Contexto();
-            Roles roles;
+            
 
             try
             {
-                roles = contexto.Roles.Find(id);
+                roles = contexto.Roles.Include(x => x.Detalle)
+                    .Where(x => x.RolId == id)
+                    .SingleOrDefault();
+                //roles = contexto.Roles.Find(id);
             }
             catch (Exception)
             {
@@ -40,7 +44,7 @@ namespace Registros.BLL
 
             try
             {
-                encontrado = contexto.Roles.Any(e => e.RolID == id);
+                encontrado = contexto.Roles.Any(e => e.RolId == id);
 
             }
             catch (Exception)
@@ -84,6 +88,14 @@ namespace Registros.BLL
 
             try
             {
+
+                //busca la entidad en la base de datos y la elimina
+                contexto.Database.ExecuteSqlRaw($"Delete FROM RolesDetalles Where RolId={roles.RolId}");
+                foreach (var item in roles.Detalle)
+                {
+                    contexto.Entry(item).State = EntityState.Added;
+                }
+
                 contexto.Entry(roles).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
@@ -125,19 +137,19 @@ namespace Registros.BLL
         public static bool Guardar(Roles roles)
         {
             
-            Contexto contexto = new Contexto();
-            if (!Utilidades.Verificar(roles))
-            {
-                if (!Existe(roles.RolID))
-                    return Insertar(roles);
-                else
-                    return Modificar(roles);
-            }
+          //  Contexto contexto = new Contexto();
+          //  if (!Utilidades.Verificar(roles))
+          //  {
+            if (!Existe(roles.RolId))
+                return Insertar(roles);
             else
-                MessageBox.Show("Este rol ya existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
-            return false;
+                return Modificar(roles);
+          ///  }
+          //  else
+          //      MessageBox.Show("Este rol ya existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
+          //  return false;
         }
-
+        
         public static List<Roles> GetList(Expression<Func<Roles, bool>> criterio)
         {
             List<Roles> lista = new List<Roles>();

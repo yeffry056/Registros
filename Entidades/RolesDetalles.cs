@@ -13,8 +13,20 @@ namespace Registros.Entidades
         public int Id { get; set; }
         public int RolId { get; set; }
         public int PermisoId { get; set; }
-        public bool EsAsignado { get; set; }
+        public string EsAsignado { get; set; }
+        public string Descripcion { get; set; }
 
+       
 
+        public RolesDetalles(int RolId, int PermisoId, string EsAsignado, string Descripcion)
+        {
+            Id = 0;
+            this.RolId = RolId;
+            this.PermisoId = PermisoId;
+            this.EsAsignado = EsAsignado;
+            this.Descripcion = Descripcion;
+
+        }
+        
     }
 }

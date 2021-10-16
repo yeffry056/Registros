@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\BtnAgregar.png" />
+    <None Remove="Resources\BtnRemover.png" />
     <None Remove="Resources\buscar.png" />
     <None Remove="Resources\Eliminar.png" />
     <None Remove="Resources\Fondo.jpg" />
@@ -27,6 +29,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\BtnAgregar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BtnRemover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\buscar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -73,6 +81,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DATA\Registros.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
