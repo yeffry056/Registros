@@ -16,6 +16,26 @@ namespace Registros.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.10");
 
+            modelBuilder.Entity("Registros.Entidades.Permisos", b =>
+                {
+                    b.Property<int>("PermisoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Descripcionp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("VecesAsignado")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("PermisoId");
+
+                    b.ToTable("Permisos");
+                });
+
             modelBuilder.Entity("Registros.Entidades.Roles", b =>
                 {
                     b.Property<int>("RolId")
@@ -54,7 +74,12 @@ namespace Registros.Migrations
                     b.Property<int>("RolId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("VecesAsignad")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PermisoId");
 
                     b.HasIndex("RolId");
 
@@ -95,11 +120,22 @@ namespace Registros.Migrations
 
             modelBuilder.Entity("Registros.Entidades.RolesDetalles", b =>
                 {
+                    b.HasOne("Registros.Entidades.Permisos", null)
+                        .WithMany("Detalle")
+                        .HasForeignKey("PermisoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Registros.Entidades.Roles", null)
                         .WithMany("Detalle")
                         .HasForeignKey("RolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Registros.Entidades.Permisos", b =>
+                {
+                    b.Navigation("Detalle");
                 });
 
             modelBuilder.Entity("Registros.Entidades.Roles", b =>

@@ -22,10 +22,11 @@ namespace Registros.UI.Registros
     public partial class rRoles : Window
     {
         private Roles roles = new Roles();
+        private Permisos p = new Permisos();
         public rRoles()
         {
             InitializeComponent();
-            this.DataContext = roles;
+            this.DataContext = roles ;
         }
         private void Limpiar()
         {
@@ -162,14 +163,13 @@ namespace Registros.UI.Registros
             } else
                 asignar = "No";
 
-            roles.Detalle.Add(new RolesDetalles(roles.RolId, Convert.ToInt32(TextPermidoId.Text), 
-               asignar, TextDescripcion.Text));
+            roles.Detalle.Add(new RolesDetalles(roles.RolId, p.PermisoId, asignar, TextDescripcion.Text));
             
             Cargar();
             
-            TextPermidoId.Focus();
+           /* TextPermidoId.Focus();
             TextPermidoId.Clear();
-            TextPermidoId.Focus();
+            TextPermidoId.Focus();*/
         }
         
     }

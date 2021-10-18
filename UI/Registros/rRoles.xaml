@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Registros.UI.Registros"
         mc:Ignorable="d"
-        Title="Registro de Roles" Height="430" Width="353" Icon="/Resources/icono.icon.png" Background="#FF10C8DA">
+        Title="Registro de Roles" Height="535" Width="353" Icon="/Resources/icono.icon.png" Background="#FF10C8DA">
     <Grid>
         <Label Content="RolId" HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextRolID" HorizontalAlignment="Left" Margin="86,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Text="{Binding RolId}"/>
@@ -13,13 +13,13 @@
         <Button HorizontalAlignment="Left" Margin="174,27,0,0" VerticalAlignment="Top" Click="BtnBuscar" Width="25">
             <Image Height="16" Width="22" Source="/Resources/buscar.png"/>
         </Button>
-        <Button HorizontalAlignment="Left" Margin="61,358,0,0" VerticalAlignment="Top" Height="27" Width="68" Click="BtnNuevo">
+        <Button HorizontalAlignment="Left" Margin="60,475,0,0" VerticalAlignment="Top" Height="27" Width="68" Click="BtnNuevo">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/nuevo.png" Width="18" />
                 <Label Content="Nuevo" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Margin="0,-2,0,0" />
             </StackPanel>
         </Button>
-        <Button HorizontalAlignment="Left" Margin="207,358,0,0" VerticalAlignment="Top" Height="27" Width="68" Click="BtnEliminar">
+        <Button HorizontalAlignment="Left" Margin="206,475,0,0" VerticalAlignment="Top" Height="27" Width="68" Click="BtnEliminar">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Eliminar.png" Stretch="Uniform" Width="18" />
                 <Label Content="Eliminar" Margin="-2,-2,0,0" />
@@ -28,7 +28,7 @@
         <Label Content="Fecha" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top"/>
         <Label Content="Descripción" HorizontalAlignment="Left" Margin="9,77,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextDescripcion" HorizontalAlignment="Left" Margin="86,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Descripcion}" TextChanged="TextDescripc"/>
-        <Button  HorizontalAlignment="Left" Margin="134,358,0,0" VerticalAlignment="Top" Height="27" Width="68" Click="BtnGuardar">
+        <Button  HorizontalAlignment="Left" Margin="133,475,0,0" VerticalAlignment="Top" Height="27" Width="68" Click="BtnGuardar">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/Guardar.png" Width="18" />
                 <Label Content="Guardar" Margin="-2,-2,0,0" />
@@ -36,8 +36,8 @@
         </Button>
 
         <CheckBox x:Name="CheckBoxActivo" Content="Activo" HorizontalAlignment="Left" Margin="260,39,0,0" VerticalAlignment="Top"  IsChecked="{Binding Activo}"/>
-        <StackPanel Orientation="Vertical" Margin="0,108,0,0" VerticalAlignment="Top" Height="235" HorizontalAlignment="Left" Width="341">
-            <GroupBox Header="Detalle de Roles" Height="235" Width="338" HorizontalAlignment="Left">
+        <StackPanel Orientation="Vertical" Margin="-1,225,0,0" VerticalAlignment="Top" Height="221" HorizontalAlignment="Left" Width="341">
+            <GroupBox Header="Detalle de Roles" Height="218" Width="338" HorizontalAlignment="Left">
                 <StackPanel Height="214" Margin="0,0,-1,0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0" Width="76">
                         <CheckBox x:Name="CheckBoxAsignado" Content="Asignado" Margin="0,0,61,0" />
@@ -45,11 +45,7 @@
 
 
 
-                    <Label Content="PermisoId" Width="70" HorizontalAlignment="Left" />
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="97" >
 
-                        <TextBox x:Name="TextPermidoId" Width="95" HorizontalAlignment="Left"  Text="{Binding Detalle.PermisoId}"/>
-                    </StackPanel>
                     <StackPanel Orientation="Horizontal" Width="151" HorizontalAlignment="Right">
                         <Button Width="71" Click="BtnAgregar" >
                             <StackPanel Orientation="Horizontal" Height="23">
@@ -71,9 +67,11 @@
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Header="RolId" Binding="{Binding RolId}" Visibility="Hidden"/>
-                            <DataGridTextColumn Header="PermisoId" Binding="{Binding PermisoId}"/>
+                            <DataGridTextColumn Header="PermisoId" Binding="{Binding PermisoId}" Visibility="Hidden"/>
+                            <DataGridTextColumn Header="Nombre"  Binding="{Binding Nombre}"/>
                             <DataGridTextColumn Header="Descripcion"  Binding="{Binding Descripcion}"/>
                             <DataGridTextColumn Header="Asignado" Binding="{Binding EsAsignado}"/>
+                            <DataGridTextColumn Header="Veces Asignado" />
                         </DataGrid.Columns>
 
 
@@ -83,6 +81,12 @@
             </GroupBox>
 
         </StackPanel>
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="9,158,0,0" VerticalAlignment="Top"/>
+        <Label Content="PermisoId" HorizontalAlignment="Left" Margin="9,129,0,0" VerticalAlignment="Top"/>
+        <Label Content="Descripcion" HorizontalAlignment="Left" Margin="9,187,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextPermisoId" HorizontalAlignment="Left" Margin="85,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding PermisoId}"/>
+        <TextBox x:Name="TextNombre" HorizontalAlignment="Left" Margin="86,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Nombre}"/>
+        <TextBox x:Name="TextDescripcionP" HorizontalAlignment="Left" Margin="86,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Descripcionp}"/>
 
 
 

@@ -15,8 +15,7 @@ namespace Registros.Entidades
         public int PermisoId { get; set; }
         public string EsAsignado { get; set; }
         public string Descripcion { get; set; }
-
-       
+        public int VecesAsignad { get; set; }
 
         public RolesDetalles(int RolId, int PermisoId, string EsAsignado, string Descripcion)
         {
@@ -25,6 +24,8 @@ namespace Registros.Entidades
             this.PermisoId = PermisoId;
             this.EsAsignado = EsAsignado;
             this.Descripcion = Descripcion;
+           
+
 
         }
         
