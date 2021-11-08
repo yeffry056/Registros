@@ -47,7 +47,7 @@ namespace Registros.UI.Registros
             {
                 Limpiar();
                 this.usuario = usuario;
-                TextClave.Password = usuario.Clave;
+                
             }
             else
                 Limpiar();
@@ -109,18 +109,24 @@ namespace Registros.UI.Registros
                 esValido = false;
                 MessageBox.Show("Transaccion Fallida", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            if (!Utilidades.Validar_Email(TextEmail.Text))
+            {
+                esValido = false;
+                MessageBox.Show("Email no valido ", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return esValido;
+            }
             return esValido;
         }
         private void BtnGuardar(object sender, RoutedEventArgs e)
         {
             if (!Validar())
                 return;
-            usuario.Clave = TextClave.Password;
+           // usuario.Clave = TextClave.Password;
             var paso = UsuariosBLL.Guardar(usuario);
 
             if (paso)
             {
-                // MessageBox.Show(roles.Descripcion);
+                
                 Limpiar();
                 MessageBox.Show("Transaccion Exitosa", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
 

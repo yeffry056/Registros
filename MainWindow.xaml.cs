@@ -1,4 +1,7 @@
-﻿using Registros.UI.Registros;
+﻿using Registros.BLL;
+using Registros.Entidades;
+using Registros.UI;
+using Registros.UI.Registros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,21 +24,40 @@ namespace Registros
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        Usuarios usuarios = new Usuarios();
+        
+       
         public MainWindow()
         {
             InitializeComponent();
+           
+        }
+        
+        private void IngresarButton_Click(object sender, RoutedEventArgs e)
+        {
+            bool paso = UsuariosBLL.Validar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
+
+            if (paso)
+            {
+                
+                rMenu m = new rMenu();
+                m.Show();
+                this.Close();
+
+            }
+            else
+            {
+                MessageBox.Show("Error Nombre Usuario o Contraseña incorrecta!", "Error!");
+                ContrasenaPasswordBox.Clear();
+                NombreUsuarioTextBox.Focus();
+            }
         }
 
-        private void RolesClik(object sender, RoutedEventArgs e)
+        private void CancelarButton_Click(object sender, RoutedEventArgs e)
         {
-            rRoles roles = new rRoles();
-            roles.Show();
-        }
-
-        private void RegistrosClik(object sender, RoutedEventArgs e)
-        {
-            rUsuarios usuario = new rUsuarios();
-            usuario.Show();
+            
+            Application.Current.Shutdown();
         }
     }
 }

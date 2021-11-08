@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -59,9 +60,10 @@ namespace Registros.BLL
 
             Contexto contexto = new Contexto();
             bool paso = false;
-
+            
             try
             {
+                usuario.Clave= GetSHA256(usuario.Clave);
                 if (contexto.Usuarios.Add(usuario) != null)
                     paso = contexto.SaveChanges() > 0;
             }
@@ -80,7 +82,7 @@ namespace Registros.BLL
         {
             Contexto contexto = new Contexto();
             bool paso = false;
-
+            usuario.Clave = GetSHA256(usuario.Clave);
             try
             {
                 contexto.Entry(usuario).State = EntityState.Modified;
@@ -151,5 +153,42 @@ namespace Registros.BLL
             return lista;
         }
 
+        
+        public static bool Validar(string nombre, string contrasena)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                paso = contexto.Usuarios
+                    .Any(u => u.Email.Equals(nombre)
+                                && u.Clave.Equals(GetSHA256(contrasena))
+                          );
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+        }
+        //Metodo para encriptar la clave 
+        private static string GetSHA256(string str)
+        {
+            SHA256 sha256 = SHA256Managed.Create();
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            byte[] stream = null;
+            StringBuilder sb = new StringBuilder();
+            stream = sha256.ComputeHash(encoding.GetBytes(str));
+            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+            return sb.ToString();
+        }
+        
     }
 }

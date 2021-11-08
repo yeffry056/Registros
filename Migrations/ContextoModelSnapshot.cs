@@ -116,6 +116,18 @@ namespace Registros.Migrations
                     b.HasKey("UsuarioId");
 
                     b.ToTable("Usuarios");
+
+                    b.HasData(
+                        new
+                        {
+                            UsuarioId = 1,
+                            Alias = "Yeffry",
+                            Clave = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+                            Email = "prueba@gmail.com",
+                            FechaIngreso = new DateTime(2021, 11, 8, 0, 2, 25, 430, DateTimeKind.Local).AddTicks(8),
+                            Nombre = "Jefferson",
+                            RolId = 0
+                        });
                 });
 
             modelBuilder.Entity("Registros.Entidades.RolesDetalles", b =>

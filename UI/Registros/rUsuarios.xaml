@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Registros.UI.Registros"
+         xmlns:PasswordHelper="clr-namespace:Registros.Resources.PasswordHelper"
         mc:Ignorable="d"
         Title="Registro de Usuarios" Height="293" Width="355"  Background="#FF01BBDF" Icon="/Resources/icono.icon.png">
     <Grid>
@@ -44,7 +45,7 @@
                 <Label Content="Eliminar" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0,-7,0,0" />
             </StackPanel>
         </Button>
-        <PasswordBox x:Name="TextClave" HorizontalAlignment="Left" Margin="69,170,0,0" VerticalAlignment="Top" Width="192"/>
+        <PasswordBox x:Name="TextClave" HorizontalAlignment="Left" Margin="69,170,0,0" VerticalAlignment="Top" Width="192" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Clave,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
         <DatePicker x:Name="FechaIngresoDatePicker" HorizontalAlignment="Left" Margin="69,72,0,0" VerticalAlignment="Top" SelectedDate="{Binding FechaIngreso}" Width="119"/>
         <Label Content="Fecha" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextEmail"  HorizontalAlignment="Left" Margin="69,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192"  Text="{Binding Email}"/>

@@ -16,7 +16,7 @@ namespace Registros.Entidades
         public string Alias { get; set; }
         public int RolId { get; set; }
         public string Email { get; set; }
-        public string Clave { get; set; }
+        public String Clave { get; set; }
         public string Activo { get; set; }
         
     }

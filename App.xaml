@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:Registros"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!--<Style TargetType="Label">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>-->
     </Application.Resources>
 </Application>

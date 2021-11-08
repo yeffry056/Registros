@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Registros.Migrations
 {
-    public partial class Migracion_Inicial : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -84,6 +84,11 @@ namespace Registros.Migrations
                         principalColumn: "RolId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Usuarios",
+                columns: new[] { "UsuarioId", "Activo", "Alias", "Clave", "Email", "FechaIngreso", "Nombre", "RolId" },
+                values: new object[] { 1, null, "Yeffry", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", "prueba@gmail.com", new DateTime(2021, 11, 8, 0, 2, 25, 430, DateTimeKind.Local).AddTicks(8), "Jefferson", 0 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_RolesDetalles_PermisoId",

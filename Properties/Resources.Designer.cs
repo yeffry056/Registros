@@ -133,6 +133,16 @@ namespace Registros.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] login {
+            get {
+                object obj = ResourceManager.GetObject("login", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] nuevo {
             get {
                 object obj = ResourceManager.GetObject("nuevo", resourceCulture);
